@@ -41,8 +41,8 @@ function readProducts() {
       stockIds.push(stockData[i].item_id);
 
     }
-    console.table([{ a: 1, b: 'Y' }, { a: 'Z', b: 2 }], ['a']);
-    //customerPrompt(stockIds);
+    
+    customerPrompt(stockIds);
 
   });
 }

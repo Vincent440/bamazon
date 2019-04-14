@@ -1,0 +1,23 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "Database test application to demo a store database",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vincent440/bamazon.git"
+  },
+  "author": "Vincent S Shury",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vincent440/bamazon/issues"
+  },
+  "homepage": "https://github.com/Vincent440/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^6.2.2",
+    "mysql": "^2.16.0"
+  }
+}

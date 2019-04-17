@@ -7,9 +7,6 @@ colors.setTheme({
   ok:["green"],
   dis: ["white","bold"]
 });
-
-
-
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -21,16 +18,33 @@ connection.connect(err => {
   if (err) throw err;
   readProducts();
 });
+function buyAgain(){
+  inquirer.prompt([
+    {
+    type: "confirm",
+    message: "Make another Purchase: Yes to continue | No to Exit App ?",
+    name:"repeat",
+    default: false
+    }
+  ]).then(user=>{
+    if(user.repeat){
+      readProducts();
+    }
+    else{
+      connection.end();
+    }
+  })
+}
 function readProducts() {
   console.log("\n"+div.rainbow.bold+"\n=== Welcome to the BAMAZON Store page | Displaying current inventory ===\n".bold.cyan+div.rainbow.bold);
   connection.query("SELECT item_id,product_name,price,stock_quantity FROM products WHERE stock_quantity > 0", (err, stock) => {
     if (err) throw err;
     let stockIds = [];
-    let table = new Table({ head: [" ITEM ID ".dis, "PRODUCT NAME".dis, "$ UNIT PRICE".ok,"STOCK QTY".dis]});
+    let table = new Table({ head: [" ITEM ID ".dis, "PRODUCT NAME".dis, "$ UNIT PRICE".ok]});
     stock.forEach(inv=>{
       stockIds.push(inv.item_id);
       table.push(["ID: ".gray+inv.item_id,inv.product_name.toUpperCase().cyan.underline.bold,
-      "$ ".ok+inv.price.toFixed(2).ok,inv.stock_quantity+" In-Stock".grey]);
+      "$ ".ok+inv.price.toFixed(2).ok]);
     });
     console.log(table.toString());
     customerPrompt(stockIds);
@@ -44,11 +58,11 @@ function customerPrompt(invIds) {
         message: "ITEM ID of the Product you would like to purchase?  ",
         name: "id",
         validate: id => {
-          if (invIds.includes(Number(id))) {
+          if (invIds.includes(id)) {
             return true;
           }
           return "MUST BE A VALID PRODUCT ID";
-        },filter: Number
+        }
       },
       {
         type: "number",
@@ -56,7 +70,7 @@ function customerPrompt(invIds) {
         name: "units",
         validate: amt => {
           var valid = !isNaN(parseFloat(amt)); 
-          if(valid && (Number.isInteger(parseFloat(amt))) && amt > 0){
+          if(valid && (Number.isInteger(amt)) && amt > 0){
             return true;
           }
           return "Please enter a positive whole number for order amount!";
@@ -88,13 +102,12 @@ function checkInventory(itemID,amount){
   });
 }
 function purchaseItem(item,amount){
-  let newInvAmount = item.stock_quantity - amount;
   let purchase = new Table({ head: ["ITEM ID".ok, "ITEM NAME".ok,"AMOUNT ORDERED".ok, "$ UNIT PRICE".ok,"$ TOTAL COST".ok]});
   purchase.push(["ID: ".ok+item.item_id,item.product_name.toUpperCase().ok,"x ".ok+amount,"$ ".ok+item.price.toFixed(2).ok,"$ ".ok+(amount * item.price).toFixed(2).ok])
   console.log(purchase.toString());
-  let query = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
-  connection.query(query,[newInvAmount,item.item_id],(err) => {
+  let query = "UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?";
+  connection.query(query,[amount,item.item_id],(err) => {
     if (err) throw err;
-    readProducts();
+    buyAgain();
   });
 }

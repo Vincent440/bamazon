@@ -13,6 +13,7 @@ stock_quantity INT(10) DEFAULT 0,
 PRIMARY KEY (item_id)
 );
 
+-- SEEDS FOR INITIAL bamazonCustomer.js file --
 INSERT INTO products (product_name, department_name, price, stock_quantity) 
 VALUES
 ("apples","produce", 3.5 , 300),

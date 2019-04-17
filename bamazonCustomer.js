@@ -1,7 +1,13 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+var Table = require('cli-table3');
+var colors = require('colors');
+let div = "========================================================================";
+colors.setTheme({
+  ok:["green"],
+  dis: ["white","bold"]
+});
+
 
 
 var connection = mysql.createConnection({
@@ -15,105 +21,80 @@ connection.connect(err => {
   if (err) throw err;
   readProducts();
 });
-function purchaseItem(item,amount){
-
-  console.log("\n\n"+item.product_name+" NOW PLACING ORDER FOR: "+ item.item_id + " ID FOR THE AMOUNT OF: "+ amount);
-
-  let newInvAmount = item.stock_quantity - amount;
-
-  let sqlQuery = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
-
-  connection.query(sqlQuery,[newInvAmount,item.item_id],(err) => {
-    if (err) throw err;
-    console.log("Your order for: "+item.product_name+" For the amount of: "+amount+" PER UNIT COST: "+item.price+"$ \n Has Succesfully been placed!\n"+
-    "\nTotal Cost of this order: "+(item.price * amount)+" $" );
-    readProducts();
-  });
-}
 function readProducts() {
-  console.log("\nGREETING WELCOME TO THE BAMAZON STORE, HERE IS THE CURRENT INVENTORY:\n\n");
-  connection.query("SELECT product_name,price,item_id,stock_quantity FROM products", (err, stockData) => {
+  console.log("\n"+div.rainbow.bold+"\n=== Welcome to the BAMAZON Store page | Displaying current inventory ===\n".bold.cyan+div.rainbow.bold);
+  connection.query("SELECT item_id,product_name,price,stock_quantity FROM products WHERE stock_quantity > 0", (err, stock) => {
     if (err) throw err;
     let stockIds = [];
-    for (let i = 0; i < stockData.length; i++) {
-      console.log("\nPRODUCT NAME: " + stockData[i].product_name +" PRICE: " + stockData[i].price +"$ ID: " + stockData[i].item_id+"\n");
-
-      stockIds.push(stockData[i].item_id);
-
-    }
-    
+    let table = new Table({ head: [" ITEM ID ".dis, "PRODUCT NAME".dis, "$ UNIT PRICE".ok,"STOCK QTY".dis]});
+    stock.forEach(inv=>{
+      stockIds.push(inv.item_id);
+      table.push(["ID: ".gray+inv.item_id,inv.product_name.toUpperCase().cyan.underline.bold,
+      "$ ".ok+inv.price.toFixed(2).ok,inv.stock_quantity+" In-Stock".grey]);
+    });
+    console.log(table.toString());
     customerPrompt(stockIds);
-
   });
 }
-
 function customerPrompt(invIds) {
   inquirer
     .prompt([
       {
-        type: "input",
-        message: "ID of the Product you would like to purchase?  ",
-        name: "itemID",
-        validate: val=>{
-          if (invIds.includes(Number(val))) {
+        type: "number",
+        message: "ITEM ID of the Product you would like to purchase?  ",
+        name: "id",
+        validate: id => {
+          if (invIds.includes(Number(id))) {
             return true;
           }
           return "MUST BE A VALID PRODUCT ID";
         },filter: Number
       },
       {
-        type: "input",
+        type: "number",
         message: "AMOUNT of the Product you would like to purchase?  ",
         name: "units",
-        validate: function(value) {
-          var valid = !isNaN(parseFloat(value));
-          return valid || "Please enter a number";
-        },
-        filter: Number
+        validate: amt => {
+          var valid = !isNaN(parseFloat(amt)); 
+          if(valid && (Number.isInteger(parseFloat(amt))) && amt > 0){
+            return true;
+          }
+          return "Please enter a positive whole number for order amount!";
+        }
       }
     ])
-    .then(custOrder => {
-      let itemID = custOrder.
-      itemID;
-      let qty = custOrder.units;
-      console.log("\n\nCHECKING STOCK FOR ITEM ID : " + itemID + " FOR QUANTITY: " + qty);
-      checkInventory(itemID,qty);
+    .then(order => {
+      checkInventory(order.id,order.units);
     });
 }
 function checkInventory(itemID,amount){
-    let sqlQuery = "SELECT item_id,stock_quantity,price,product_name FROM products GROUP BY item_id = ? HAVING item_id = ?";
-    connection.query(sqlQuery,[itemID,itemID],(err, itemData) => {
+    let query = "SELECT item_id,stock_quantity,price,product_name FROM products GROUP BY item_id = ? HAVING item_id = ?";
+    connection.query(query,[itemID,itemID],(err, itemData) => {
     if (err) throw err;
     let item =itemData[0],
     stockAmt = item.stock_quantity,
     stockId = item.item_id;
-    if(stockAmt >= amount && stockId === itemID){
-      console.log("\nYOU ARE IN LUCK\n\nSTOCK AVAILIABLE MAKING PURCHSE NOW....\n");
+      if(stockAmt >= amount && stockId === itemID && amount>0){
+      console.log(div.green+"\nSuccesfully placing order.\nORDER DATA:\n".green.underline+div.green);
       purchaseItem(item,amount);
-    }
-    else{
-      console.log("\nInsufficient quantity!\n");
-      return readProducts();
-    }
+      }
+      else  {
+       console.log(div.red+"\nInsufficient quantity in Stock to place this order, Try a different amount or Item.\nUNSUCCESSFUL ORDER DATA:\n".red.underline+div.red);
+        let failed = new Table({ head: ["ITEM ID", "ITEM NAME", "$ UNIT PRICE","$ TOTAL COST","AMOUNT ORDERED","CURRENT STOCK"]});
+        failed.push(["ID: ".gray+item.item_id,item.product_name.toUpperCase().red,"$ ".red+item.price.toFixed(2).red,"$ ".red+(amount * item.price).toFixed(2).red,amount,item.stock_quantity]);
+       console.log(failed.toString());
+       return readProducts();
+      }
   });
 }
-
-//TRANSFORM INQUIRER THE USER ID INTO THE NAME OF THE ITEM TO DISPLAY???
-//(IGNORE THIS IF NOT COMPLETE... BONUS SIDE: display in table as "extra")
-
-
-// == IGNORE/BONUS ==  ask user if the order is correct and allow them to restart
-// or go change one input before verifying order and submitting  ==
-
-//Once the customer has placed the order,
-//app should check if store has enough of the product to meet the customer's request.
-
-// If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
-// However, if your store does have enough of the product, you should fulfill the customer's order.
-
-// This means updating the SQL database to reflect the remaining quantity.
-// Once the update goes through, show the customer the total cost of their purchase.
-
-// 8. However, if your store _does_ have enough of the product, you should fulfill the customer's order.
-//    * This means updating the SQL database to reflect the remaining quantity.
-//    * Once the update goes through, show the customer the total cost of their purchase.
+function purchaseItem(item,amount){
+  let newInvAmount = item.stock_quantity - amount;
+  let purchase = new Table({ head: ["ITEM ID".ok, "ITEM NAME".ok,"AMOUNT ORDERED".ok, "$ UNIT PRICE".ok,"$ TOTAL COST".ok]});
+  purchase.push(["ID: ".ok+item.item_id,item.product_name.toUpperCase().ok,"x ".ok+amount,"$ ".ok+item.price.toFixed(2).ok,"$ ".ok+(amount * item.price).toFixed(2).ok])
+  console.log(purchase.toString());
+  let query = "UPDATE products SET stock_quantity = ? WHERE item_id = ?";
+  connection.query(query,[newInvAmount,item.item_id],(err) => {
+    if (err) throw err;
+    readProducts();
+  });
+}

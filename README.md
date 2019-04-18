@@ -12,7 +12,7 @@ __NAVIGATION:__
 * [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki)
 * [Getting Started](https://github.com/Vincent440/bamazon/wiki/Getting-Started)
 * [Customer App DEMO](https://github.com/Vincent440/bamazon/wiki/Customer-Demo)
-* [Manager App DEMO]()
+* [Manager App DEMO](https://github.com/Vincent440/bamazon/wiki/Manager-Demo)
 * [About the creator](#By-Vince-Shury)
 
 **There are Two parts of this application __BamazonCustomer.js & BamazonManager.js.__**

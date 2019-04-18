@@ -180,7 +180,7 @@ function managerPrompt(){
               switch(manager.menu) {
               case"View Products for Sale":
                 return display();
-              case"View Low Inventory"://Extra to do.. add input for number, to make varible for amount of low inv to view.
+              case"View Low Inventory":
                 return displayLow(manager.amt);
               case"Add to Inventory":
                 return changeCurrentInv(manager.id,manager.qty);

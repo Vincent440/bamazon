@@ -10,8 +10,8 @@ The app will take in orders from customers and deplete stock from the store's in
 __NAVIGATION:__
 * [Customer File Description](#Bamazon-Customer)
 * [Manager File Description](#Bamazon-Manager)
-* [Getting Started](https://github.com/Vincent440/bamazon/wiki/Getting-Started)
 * [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki)
+* [Getting Started](https://github.com/Vincent440/bamazon/wiki/Getting-Started)
 * [About the creator](#By-Vince-Shury)
 
 **There are Two parts of this application __BamazonCustomer.js & BamazonManager.js.__**
@@ -26,6 +26,7 @@ The Manager file allows the user to:
 * ADD Stock to a specific item by inputting an ID and Amount to add to the Inventory.
 * CREATE an entirely new Item to add to the Database:
 * Exit the application.
+
 --- 
 
 ##    Bamazon Customer

@@ -1,4 +1,4 @@
-# Bamazon Command Line Application.
+# Bamazon Command Line Application
 
 Welcome to my BAMAZON app. This Application is an Amazon-like storefront display in command line tables through Node.js.
 
@@ -11,6 +11,8 @@ __NAVIGATION:__
 * [Manager File Description](#Bamazon-Manager)
 * [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki)
 * [Getting Started](https://github.com/Vincent440/bamazon/wiki/Getting-Started)
+* [Customer App DEMO](https://github.com/Vincent440/bamazon/wiki/Customer-Demo)
+* [Manager App DEMO]()
 * [About the creator](#By-Vince-Shury)
 
 **There are Two parts of this application __BamazonCustomer.js & BamazonManager.js.__**
@@ -105,9 +107,12 @@ The Bamazon Managers View, allows the user to:
 
 ---
 
+
 #### By Vince Shury
 Thanks again for viewing my repository.
 
 If you like this application please check out my [Github Profile](https://github.com/Vincent440) to see my other repositories.
 
 Don't forget to view my [Github Portfolio page](https://vincent440.github.io/) well you are there Thanks!
+
+[Click here to go back to the Top of Page](#Bamazon-Command-Line-Application)

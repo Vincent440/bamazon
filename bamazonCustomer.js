@@ -31,6 +31,7 @@ function buyAgain(){
       readProducts();
     }
     else{
+      console.log("\nThank you come again!\nGoodbye.\n")
       connection.end();
     }
   })

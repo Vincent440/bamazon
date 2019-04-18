@@ -7,6 +7,11 @@ Utilizing Node.js and mySql database quieries to manipulate the database accordi
 
 The app will take in orders from customers and deplete stock from the store's inventory.
 
+__NAVIGATION:__
+* [BamazonCustomer File Description](#Bamazon-Customer)
+* [BamazonManager File Description](#Bamazon-Manager)
+* [About the creator](#By-Vince-Shury)
+
 **There are Two parts of this application __BamazonCustomer.js & BamazonManager.js.__**
 
 The Customer file allows the user to:
@@ -27,18 +32,19 @@ The Manager file allows the user to:
 
 ## Bamazon Customer
 
-__The BamazonCustomer File:__
+__The bamazonCustomer.js File:__
 
-This file is the customer view of the Bamazon application, Which has limited options, allowing the user to only enter an Item ID and Amount and attempt to place an order from the database. 
+This is the customer view of the Bamazon application, Which has very limited options for the user, App displays the Available Stock in the MySQL Bamazon Database,prompts the user to Enter a valid ITEM ID that was displayed and order amount, Upon submitting that input  attempts to place an order from the database. 
 
 
-* Upon loading the file Displays a table of the current inventory items in the mySql products database Showing the customer:
+* Upon loading the file Displays a console table of the current inventory items in the mySql products database Showing the customer:
    * ID
    * Item Name
    * Price
 
 * Prompts For the user to enter a Item ID
-   * The ID entered must a number that is an Item avaliable and in-stock in the Inventory.
+   * The ID entered must a _whole number & **Valid** item-ID_
+   * A Valid ID would only be an item ID that was displayed to the user from the table showing all items currently IN-Stock in the database. 
 
 * Prompts for the Amount of that Item they would like to buy
    * This must be a valid whole number input, greater then 0.
@@ -60,7 +66,7 @@ This file is the customer view of the Bamazon application, Which has limited opt
 
 ## Bamazon Manager
 
-__The BamazonManager File:__
+__The bamazonManager.js File:__
 
 This is the Bamazon Managers View, which allows the user to:
 
@@ -69,15 +75,11 @@ This is the Bamazon Managers View, which allows the user to:
 * ADD to the stock amount of a specific Item ID
 * ADD a completely new item to the Inventory
 
----
-
-
-
 
 ---
 
-##### This app was created by Vince Shury
-
-If you like this application please check out my [Github Profile](https://github.com/Vincent440) to see my repositories.
+#### By Vince Shury
+Thanks again for viewing my repository 
+If you like this application please check out my [Github Profile](https://github.com/Vincent440) to see my other repositories.
 
 Don't forget to view my [Github Portfolio page](https://vincent440.github.io/) well you are there Thanks!

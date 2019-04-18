@@ -4,7 +4,9 @@ Welcome to my BAMAZON app. This Application is an Amazon-like storefront display
 
 Utilizing Node.js and MySQL database queries to manipulate the database in the command line according to the user input received through inquirer Prompts.
 
-The app will take in orders from customers and deplete stock from the store's inventory.
+Customer app will take in orders from customers and deplete stock from the store's inventory.
+
+Manager app will view entire inventory, view only low inventory, add stock quantity to an item, or create a new item.
 
 __NAVIGATION LINKS:__
 * [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki) - Github Wiki page to hold the help pages and demo page of the application.

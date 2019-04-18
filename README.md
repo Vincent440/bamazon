@@ -8,8 +8,8 @@ Utilizing Node.js and MySQL database quieries to manipulate the database in the 
 The app will take in orders from customers and deplete stock from the store's inventory.
 
 __NAVIGATION:__
-* [BamazonCustomer File Description](#Bamazon-Customer)
-* [BamazonManager File Description](#Bamazon-Manager)
+* [Customer File Description](#Bamazon-Customer)
+* [Manager File Description](#Bamazon-Manager)
 * [About the creator](#By-Vince-Shury)
 * [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki/Bamazon-Wiki-Home)
 
@@ -48,7 +48,7 @@ This is the customer view of the Bamazon application, Which has very limited opt
    * This must be a valid whole number input, greater then 0.
 
 1. Once the User has entered an ID , and an Order Amount:
-   1. __IF Amount ordered is in-stock:__ 
+   * __IF Amount is in-stock:__ 
       * Then the order is placed and the total cost of the order is displayed in a table with order information. An inquirer confirm prompt is then displayed to the user:
          * Would you like to make another purchase?
 
@@ -56,7 +56,7 @@ This is the customer view of the Bamazon application, Which has very limited opt
 
             * NO to exit the application. 
 
-   1. __HOWEVER IF amount is NOT in-stock:__
+   * __IF amount is NOT in-stock:__
 
         * The Order is blocked 
         * The attempted order information is displayed
@@ -98,7 +98,7 @@ The Bamazon Managers View, allows the user to:
       * Stock quantity
       * Price $
    * This information is then Pushed to the products table of the Bamazon database, creating the new product information from what the user has entered. 
-   
+
 * "EXIT": Exits the application.
    * Every command will send the user back to the menu screen, this option is available to Exit the application at anytime user is at the menu screen. 
 

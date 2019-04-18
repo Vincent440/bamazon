@@ -1,9 +1,9 @@
-# Bamazon Node.js & MySQL Command Line Application.
+# Bamazon Command Line Application.
 
 
 Welcome to my BAMAZON app. This Application is an Amazon-like storefront display in command line tables through Node.js.
 
-Utilizing Node.js and MySQL database quieries to manipulate the database in the command line according to the user input received through inquirer Prompts.
+Utilizing Node.js and MySQL database queries to manipulate the database in the command line according to the user input received through inquirer Prompts.
 
 The app will take in orders from customers and deplete stock from the store's inventory.
 
@@ -12,6 +12,7 @@ __NAVIGATION:__
 * [Manager File Description](#Bamazon-Manager)
 * [About the creator](#By-Vince-Shury)
 * [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki/Bamazon-Wiki-Home)
+
 
 **There are Two parts of this application __BamazonCustomer.js & BamazonManager.js.__**
 

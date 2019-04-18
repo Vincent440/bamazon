@@ -10,9 +10,9 @@ The app will take in orders from customers and deplete stock from the store's in
 __NAVIGATION:__
 * [Customer File Description](#Bamazon-Customer)
 * [Manager File Description](#Bamazon-Manager)
+* [Getting Started](https://github.com/Vincent440/bamazon/wiki/Getting-Started)
+* [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki)
 * [About the creator](#By-Vince-Shury)
-* [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki/Bamazon-Wiki-Home)
-
 
 **There are Two parts of this application __BamazonCustomer.js & BamazonManager.js.__**
 

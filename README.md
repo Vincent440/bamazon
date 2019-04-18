@@ -1,6 +1,5 @@
 # Bamazon Command Line Application.
 
-
 Welcome to my BAMAZON app. This Application is an Amazon-like storefront display in command line tables through Node.js.
 
 Utilizing Node.js and MySQL database queries to manipulate the database in the command line according to the user input received through inquirer Prompts.

@@ -6,14 +6,14 @@ Utilizing Node.js and MySQL database queries to manipulate the database in the c
 
 The app will take in orders from customers and deplete stock from the store's inventory.
 
-__NAVIGATION:__
-* [Customer File Description](#Bamazon-Customer)
-* [Manager File Description](#Bamazon-Manager)
-* [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki)
-* [Getting Started](https://github.com/Vincent440/bamazon/wiki/Getting-Started)
-* [Customer App DEMO](https://github.com/Vincent440/bamazon/wiki/Customer-Demo)
-* [Manager App DEMO](https://github.com/Vincent440/bamazon/wiki/Manager-Demo)
-* [About the creator](#By-Vince-Shury)
+__NAVIGATION LINKS:__
+* [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki) - Github Wiki page to hold the help pages and demo page of the application.
+* [Customer File Description](#Bamazon-Customer) - A description of how the customer app logic functions.
+* [Manager File Description](#Bamazon-Manager) - A description of how the manager app logic functions.
+* [Getting Started](https://github.com/Vincent440/bamazon/wiki/Getting-Started) - This page will help you understand the basics of how to run this app.
+* [Customer App DEMO](https://github.com/Vincent440/bamazon/wiki/Customer-Demo) - Demo with screen shots of the customer application functioning.
+* [Manager App DEMO](https://github.com/Vincent440/bamazon/wiki/Manager-Demo)- Demo with screen shots of the manager application functioning.
+* [About the creator](#By-Vince-Shury) - Links to my github page and github hosted portfolio.
 
 **There are Two parts of this application __BamazonCustomer.js & BamazonManager.js.__**
 
@@ -28,9 +28,12 @@ The Manager file allows the user to:
 * CREATE an entirely new Item to add to the Database:
 * Exit the application.
 
+__Before you begin Please visit [GETTING STARTED](https://github.com/Vincent440/bamazon/wiki/Getting-Started) To confirm you have all the required installations and files set up.__
+
 --- 
 
 ##    Bamazon Customer
+* Please [Click here](https://github.com/Vincent440/bamazon/wiki/Customer-Demo) for the Customer App Demo
 
 __The bamazonCustomer.js File:__
 
@@ -65,9 +68,11 @@ This is the customer view of the Bamazon application, Which has very limited opt
         * The attempted order information is displayed
         * The Current inventory is redisplayed and the user is prompted to again to enter item ID and amount to place new order
 
+
 ---
 
 ##    Bamazon Manager
+* Please [Click here](https://github.com/Vincent440/bamazon/wiki/Manager-Demo) for the Manager App Demo
 
 __The bamazonManager.js File:__
 

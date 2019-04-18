@@ -120,4 +120,4 @@ If you like this application please check out my [Github Profile](https://github
 
 Don't forget to view my [Github Portfolio page](https://vincent440.github.io/) well you are there Thanks!
 
-[Click here to go back to the Top of Page](#Bamazon-Command-Line-Application)
+[Top of Page Readme](#Bamazon-Command-Line-Application) |  [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki) - Github Wiki page to hold the help pages and demo page of the application.

@@ -13,6 +13,7 @@ __NAVIGATION LINKS:__
 * [Customer File Description](#Bamazon-Customer) - A description of how the customer app logic functions.
 * [Manager File Description](#Bamazon-Manager) - A description of how the manager app logic functions.
 * [Getting Started](https://github.com/Vincent440/bamazon/wiki/Getting-Started) - This page will help you understand the basics of how to run this app.
+* __[Youtube Customer/Manager Application Demo Video](https://youtu.be/CmccdhrUFPM)__
 * [Customer App DEMO](https://github.com/Vincent440/bamazon/wiki/Customer-Demo) - Demo with screen shots of the customer application functioning.
 * [Manager App DEMO](https://github.com/Vincent440/bamazon/wiki/Manager-Demo)- Demo with screen shots of the manager application functioning.
 * [About the creator](#By-Vince-Shury) - Links to my github page and github hosted portfolio.
@@ -122,4 +123,4 @@ If you like this application please check out my [Github Profile](https://github
 
 Don't forget to view my [Github Portfolio page](https://vincent440.github.io/) well you are there Thanks!
 
-[Top of Readme](#Bamazon-Command-Line-Application) |  [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki)
+[Top of Readme](#Bamazon-Command-Line-Application) |  [Wiki Home Page](https://github.com/Vincent440/bamazon/wiki) | [App Demo Youtube Video](https://youtu.be/CmccdhrUFPM)

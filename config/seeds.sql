@@ -1,4 +1,3 @@
--- SEEDS FOR INITIAL Bamazon Database creation --
 INSERT INTO products (product_name, department_name, price, stock_quantity) 
 VALUES
 ("apples","produce", 3.5 , 2000),
@@ -13,4 +12,3 @@ VALUES
 ("cakes","pastries",10, 500),
 ("strawberries","produce", 3.5 , 500),
 ("raspberries","produce", 3.5 , 1000);
---example items to place in the Bamazon database--

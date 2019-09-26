@@ -1,9 +1,6 @@
 DROP DATABASE IF EXISTS bamazon;
---create the bamazon database--
 CREATE DATABASE bamazon;
---select the database--
 USE bamazon;
---Create the products table to hold the store inventory--
 CREATE TABLE products(
 item_id INT AUTO_INCREMENT NOT NULL,
 product_name VARCHAR(255) NOT NULL,

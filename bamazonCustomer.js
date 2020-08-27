@@ -54,7 +54,7 @@ function readProducts () {
       if (err) throw err
       let stockIds = []
       let table = new Table({
-        head: [' ITEM ID '.headerMsg, 'PRODUCT NAME'.headerMsg, '$ UNIT PRICE'.ok]
+        head: ['ITEM ID'.headerMsg, 'PRODUCT NAME'.headerMsg, '$ UNIT PRICE'.ok]
       })
       stock.forEach(inv => {
         stockIds.push(inv.item_id)
@@ -74,24 +74,27 @@ function customerPrompt (invIds) {
     .prompt([
       {
         type: 'number',
-        message: ' ITEM ID '.headerMsg + ' of the Product you would like to purchase? '.bgBlue + '\n',
+        message: 'ITEM ID '.headerMsg + 'of the Product you would like to purchase? '.bgBlue + '\n',
         name: 'id',
         filter: userInput => {
           if (userInput === 'NaN' || isNaN(userInput)) {
             return ''
           }
-          return userInput
+          if (invIds.includes(userInput)) {
+            return userInput
+          }
+          return ''
         },
         validate: (id, answersHash) => {
           if (invIds.includes(id)) {
             return true
           }
-          return 'MUST BE A VALID PRODUCT ID'.errorMsg
+          return 'Must be a valid ITEM ID'.errorMsg
         }
       },
       {
         type: 'number',
-        message: ' AMOUNT '.headerMsg + ' of the Product you would like to purchase? '.bgBlue + '\n',
+        message: ' AMOUNT '.headerMsg + 'of the Product you would like to purchase? '.bgBlue + '\n',
         name: 'units',
         default: 1,
         filter: userInput => {
@@ -106,7 +109,7 @@ function customerPrompt (invIds) {
             return true
           }
           amt = 0
-          return 'Please enter a positive whole number for order amount!'.errorMsg
+          return 'Must enter a positive whole number for order amount!'.errorMsg
         }
       }
     ])

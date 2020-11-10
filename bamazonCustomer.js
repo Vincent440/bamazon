@@ -11,10 +11,10 @@ colors.setTheme({
   errorMsg: ['black','underline','bgRed']
 })
 const connection = mysql.createConnection({
-  host: process.env.HOST,
-  port: process.env.PORT,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
+  host: process.env.DATABASE_HOST,
+  port: process.env.DATABASE_PORT,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME
 })
 connection.connect(err => {
